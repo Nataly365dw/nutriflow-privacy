@@ -40,9 +40,9 @@
   </div>
 
   <div class="lang-tabs">
-    <button class="lang-tab active" onclick="setLang('en')">🇬🇧 English</button>
-    <button class="lang-tab" onclick="setLang('ru')">🇷🇺 Русский</button>
-    <button class="lang-tab" onclick="setLang('tr')">🇹🇷 Türkçe</button>
+    <button class="lang-tab active" onclick="setLang('en',this)">🇬🇧 English</button>
+    <button class="lang-tab" onclick="setLang('ru',this)">🇷🇺 Русский</button>
+    <button class="lang-tab" onclick="setLang('tr',this)">🇹🇷 Türkçe</button>
   </div>
 
   <!-- ═══════════════════════════════ ENGLISH ═══════════════════════════════ -->
@@ -50,7 +50,7 @@
     <h2>Privacy Policy</h2>
     <p>This Privacy Policy describes how NutriFlow ("the App"), developed by <strong>Nataliia Kozintseva</strong>, handles your information. We are committed to protecting your privacy.</p>
 
-    <div class="highlight"><p>🔒 NutriFlow stores all your personal data <strong>locally on your device only</strong>. We do not collect, transmit, or store any personal data on external servers.</p></div>
+    <div class="highlight"><p>🔒 NutriFlow stores all your personal health data <strong>locally on your device only</strong>. We do not collect, store, or sell personal data. Some features (food search, AI photo recognition) send minimal data through our server solely to process your request.</p></div>
 
     <h2>1. Information We Collect</h2>
 
@@ -64,42 +64,67 @@
       <li>Your daily nutrition goals and app settings</li>
       <li>Workout logs</li>
     </ul>
-    <p>This data never leaves your device unless you explicitly export it.</p>
+    <p>This data never leaves your device unless you explicitly use a feature that requires internet connectivity (described below).</p>
 
     <h2>2. Food Photo Recognition</h2>
     <p>NutriFlow offers an optional AI-powered food recognition feature. When you use this feature:</p>
     <ul>
-      <li>The photo you take is sent to a third-party AI service (<strong>Groq API</strong>) solely to identify food items</li>
-      <li>The photo is processed to generate a response and is <strong>not stored</strong> by us</li>
+      <li>The photo is transmitted to our relay server (hosted on <strong>Render.com</strong>) and forwarded to the <strong>Groq API</strong> solely to identify food items</li>
+      <li>The photo is processed to generate a response and is <strong>not stored</strong> by us, Render.com, or Groq after processing</li>
       <li>This feature is entirely optional — the app works fully without it</li>
     </ul>
-    <p>Please refer to <a href="https://groq.com/privacy-policy/" target="_blank" style="color:#a78bfa">Groq's Privacy Policy</a> for details on how they handle data.</p>
+    <p>Please refer to <a href="https://groq.com/privacy-policy/" target="_blank" style="color:#a78bfa">Groq's Privacy Policy</a> and <a href="https://render.com/privacy" target="_blank" style="color:#a78bfa">Render's Privacy Policy</a> for details.</p>
 
-    <h2>3. Food Database Search</h2>
-    <p>When you use the Open Food Facts database search, your search query is sent to the <strong>Open Food Facts API</strong> (openfoodfacts.org) to retrieve food product information. No personal information is included in these requests. See <a href="https://world.openfoodfacts.org/privacy" target="_blank" style="color:#a78bfa">Open Food Facts Privacy Policy</a>.</p>
+    <h2>3. Food Search</h2>
+    <p>NutriFlow offers two food search modes:</p>
+    <ul>
+      <li><strong>Open Food Facts search:</strong> Your search query is sent through our relay server to the Open Food Facts API (openfoodfacts.org) to retrieve product information.</li>
+      <li><strong>AI food search:</strong> Your search query is sent through our relay server to the Groq API, which returns estimated nutritional data for the food you searched.</li>
+    </ul>
+    <p>No personal information is included in these requests. See <a href="https://world.openfoodfacts.org/privacy" target="_blank" style="color:#a78bfa">Open Food Facts Privacy Policy</a>.</p>
 
-    <h2>4. Data We Do NOT Collect</h2>
+    <h2>4. Water Reminder Notifications</h2>
+    <p>NutriFlow can send you periodic reminders to drink water. This feature:</p>
+    <ul>
+      <li>Is entirely optional and can be turned on or off at any time in Settings</li>
+      <li>Uses Android's alarm system to schedule notifications locally on your device</li>
+      <li>Does not transmit any data — reminders are processed entirely on-device</li>
+      <li>Requires the POST_NOTIFICATIONS, SCHEDULE_EXACT_ALARM, and RECEIVE_BOOT_COMPLETED permissions to function correctly</li>
+    </ul>
+
+    <h2>5. App Permissions</h2>
+    <p>NutriFlow requests the following Android permissions:</p>
+    <ul>
+      <li><strong>CAMERA</strong> — for AI food photo recognition only</li>
+      <li><strong>INTERNET</strong> — for food search and AI photo analysis</li>
+      <li><strong>POST_NOTIFICATIONS</strong> — to send water reminder notifications</li>
+      <li><strong>SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM</strong> — to deliver water reminders on time, even when the device is in sleep mode</li>
+      <li><strong>RECEIVE_BOOT_COMPLETED</strong> — to reschedule water reminders after the device restarts</li>
+    </ul>
+    <p>None of these permissions are used to collect personal data.</p>
+
+    <h2>6. Data We Do NOT Collect</h2>
     <ul>
       <li>We do not collect your name, email, or any account information</li>
       <li>We do not use analytics or tracking tools</li>
       <li>We do not serve advertisements</li>
-      <li>We do not share any data with third parties (except photo recognition and food search as described above)</li>
-      <li>We do not have access to any data stored on your device</li>
+      <li>We do not share any data with third parties beyond what is described above</li>
+      <li>We do not have access to any health data stored on your device</li>
     </ul>
 
-    <h2>5. Children's Privacy</h2>
+    <h2>7. Children's Privacy</h2>
     <p>NutriFlow is not directed at children under the age of 13. We do not knowingly collect any information from children.</p>
 
-    <h2>6. Changes to This Policy</h2>
+    <h2>8. Changes to This Policy</h2>
     <p>We may update this Privacy Policy from time to time. Any changes will be posted within the app or on this page. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
 
-    <h2>7. Contact</h2>
+    <h2>9. Contact</h2>
     <div class="contact-box">
       <p>Questions about this Privacy Policy?</p>
       <p style="margin-top:8px">Contact: <a href="mailto:natalydoc19w63@gmail.com">natalydoc19w63@gmail.com</a></p>
       <p style="margin-top:4px;color:#475569;font-size:13px">Developer: Nataliia Kozintseva</p>
     </div>
-    <div class="date">Last updated: June 2025</div>
+    <div class="date">Last updated: March 2026</div>
   </div>
 
   <!-- ═══════════════════════════════ RUSSIAN ═══════════════════════════════ -->
@@ -107,7 +132,7 @@
     <h2>Политика конфиденциальности</h2>
     <p>Настоящая Политика конфиденциальности описывает, как приложение NutriFlow, разработанное <strong>Наталией Козинцевой</strong>, обрабатывает вашу информацию.</p>
 
-    <div class="highlight"><p>🔒 NutriFlow хранит все ваши личные данные <strong>исключительно на вашем устройстве</strong>. Мы не собираем, не передаём и не храним личные данные на внешних серверах.</p></div>
+    <div class="highlight"><p>🔒 NutriFlow хранит все ваши личные данные о здоровье <strong>исключительно на вашем устройстве</strong>. Мы не собираем, не продаём и не храним личные данные. Некоторые функции (поиск продуктов, распознавание по фото) передают минимальный объём данных через наш сервер исключительно для обработки вашего запроса.</p></div>
 
     <h2>1. Какие данные мы обрабатываем</h2>
 
@@ -121,42 +146,67 @@
       <li>Цели по питанию и настройки приложения</li>
       <li>Журнал тренировок</li>
     </ul>
-    <p>Эти данные никогда не покидают ваше устройство, если вы сами их не экспортируете.</p>
+    <p>Эти данные никогда не покидают ваше устройство, если вы сами не используете функции, требующие интернет-соединения (описаны ниже).</p>
 
     <h2>2. Распознавание продуктов по фото</h2>
     <p>NutriFlow предлагает опциональную функцию распознавания еды с помощью ИИ. При использовании этой функции:</p>
     <ul>
-      <li>Сделанное вами фото отправляется стороннему ИИ-сервису (<strong>Groq API</strong>) исключительно для определения продуктов</li>
-      <li>Фото обрабатывается для получения ответа и <strong>не сохраняется</strong> нами</li>
+      <li>Фото передаётся на наш промежуточный сервер (размещённый на <strong>Render.com</strong>) и пересылается в <strong>Groq API</strong> исключительно для определения продуктов</li>
+      <li>Фото обрабатывается для получения ответа и <strong>не сохраняется</strong> нами, Render.com или Groq после обработки</li>
       <li>Функция полностью опциональна — приложение работает без неё</li>
     </ul>
-    <p>Подробнее см. <a href="https://groq.com/privacy-policy/" target="_blank" style="color:#a78bfa">Политику конфиденциальности Groq</a>.</p>
+    <p>Подробнее см. <a href="https://groq.com/privacy-policy/" target="_blank" style="color:#a78bfa">Политику конфиденциальности Groq</a> и <a href="https://render.com/privacy" target="_blank" style="color:#a78bfa">Политику конфиденциальности Render</a>.</p>
 
-    <h2>3. Поиск по базе продуктов</h2>
-    <p>При использовании поиска по базе Open Food Facts ваш поисковый запрос отправляется в <strong>API Open Food Facts</strong> (openfoodfacts.org) для получения информации о продуктах. Никакие личные данные в этих запросах не передаются. См. <a href="https://world.openfoodfacts.org/privacy" target="_blank" style="color:#a78bfa">Политику конфиденциальности Open Food Facts</a>.</p>
+    <h2>3. Поиск продуктов</h2>
+    <p>NutriFlow предлагает два режима поиска продуктов:</p>
+    <ul>
+      <li><strong>Поиск по Open Food Facts:</strong> Ваш запрос передаётся через наш сервер в API Open Food Facts (openfoodfacts.org) для получения информации о продуктах.</li>
+      <li><strong>Поиск с помощью ИИ:</strong> Ваш запрос передаётся через наш сервер в Groq API, который возвращает расчётные данные о питательной ценности продукта.</li>
+    </ul>
+    <p>Никакие личные данные в этих запросах не передаются. См. <a href="https://world.openfoodfacts.org/privacy" target="_blank" style="color:#a78bfa">Политику конфиденциальности Open Food Facts</a>.</p>
 
-    <h2>4. Что мы НЕ собираем</h2>
+    <h2>4. Напоминания о воде</h2>
+    <p>NutriFlow может отправлять периодические напоминания о необходимости пить воду. Эта функция:</p>
+    <ul>
+      <li>Полностью опциональна и отключается в настройках в любое время</li>
+      <li>Использует систему будильников Android для локального планирования уведомлений</li>
+      <li>Не передаёт никаких данных — напоминания обрабатываются исключительно на устройстве</li>
+      <li>Требует разрешений POST_NOTIFICATIONS, SCHEDULE_EXACT_ALARM и RECEIVE_BOOT_COMPLETED</li>
+    </ul>
+
+    <h2>5. Разрешения приложения</h2>
+    <p>NutriFlow запрашивает следующие разрешения Android:</p>
+    <ul>
+      <li><strong>CAMERA</strong> — только для функции распознавания еды по фото</li>
+      <li><strong>INTERNET</strong> — для поиска продуктов и анализа фото с помощью ИИ</li>
+      <li><strong>POST_NOTIFICATIONS</strong> — для отправки напоминаний о воде</li>
+      <li><strong>SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM</strong> — для своевременной доставки напоминаний, в том числе в спящем режиме</li>
+      <li><strong>RECEIVE_BOOT_COMPLETED</strong> — для повторного планирования напоминаний после перезагрузки устройства</li>
+    </ul>
+    <p>Ни одно из этих разрешений не используется для сбора личных данных.</p>
+
+    <h2>6. Что мы НЕ собираем</h2>
     <ul>
       <li>Мы не собираем ваше имя, email или данные аккаунта</li>
       <li>Мы не используем аналитику или инструменты отслеживания</li>
       <li>Мы не показываем рекламу</li>
-      <li>Мы не передаём данные третьим лицам (кроме случаев, описанных выше)</li>
-      <li>У нас нет доступа к данным, хранящимся на вашем устройстве</li>
+      <li>Мы не передаём данные третьим лицам сверх описанного выше</li>
+      <li>У нас нет доступа к данным о здоровье, хранящимся на вашем устройстве</li>
     </ul>
 
-    <h2>5. Дети</h2>
+    <h2>7. Дети</h2>
     <p>NutriFlow не предназначен для детей младше 13 лет. Мы не собираем информацию о детях намеренно.</p>
 
-    <h2>6. Изменения политики</h2>
+    <h2>8. Изменения политики</h2>
     <p>Мы можем периодически обновлять эту Политику конфиденциальности. Изменения будут опубликованы в приложении или на этой странице.</p>
 
-    <h2>7. Контакты</h2>
+    <h2>9. Контакты</h2>
     <div class="contact-box">
       <p>Вопросы по Политике конфиденциальности?</p>
       <p style="margin-top:8px">Контакт: <a href="mailto:natalydoc19w63@gmail.com">natalydoc19w63@gmail.com</a></p>
       <p style="margin-top:4px;color:#475569;font-size:13px">Разработчик: Наталия Козинцева</p>
     </div>
-    <div class="date">Последнее обновление: июнь 2025</div>
+    <div class="date">Последнее обновление: март 2026</div>
   </div>
 
   <!-- ═══════════════════════════════ TURKISH ═══════════════════════════════ -->
@@ -164,7 +214,7 @@
     <h2>Gizlilik Politikası</h2>
     <p>Bu Gizlilik Politikası, <strong>Nataliia Kozintseva</strong> tarafından geliştirilen NutriFlow uygulamasının bilgilerinizi nasıl işlediğini açıklamaktadır.</p>
 
-    <div class="highlight"><p>🔒 NutriFlow tüm kişisel verilerinizi <strong>yalnızca cihazınızda yerel olarak</strong> saklar. Kişisel verileri harici sunucularda toplamaz, iletmez veya depolamayız.</p></div>
+    <div class="highlight"><p>🔒 NutriFlow tüm kişisel sağlık verilerinizi <strong>yalnızca cihazınızda yerel olarak</strong> saklar. Kişisel verileri toplamaz, satmaz veya depolamayız. Bazı özellikler (yiyecek arama, yapay zeka fotoğraf tanıma) yalnızca isteğinizi işlemek amacıyla sunucumuz üzerinden minimum veri iletir.</p></div>
 
     <h2>1. İşlediğimiz Veriler</h2>
 
@@ -178,52 +228,77 @@
       <li>Günlük beslenme hedefleri ve uygulama ayarları</li>
       <li>Antrenman kayıtları</li>
     </ul>
-    <p>Bu veriler, siz açıkça dışa aktarmadıkça cihazınızı terk etmez.</p>
+    <p>Bu veriler, internet bağlantısı gerektiren bir özelliği açıkça kullanmadıkça cihazınızı terk etmez (aşağıda açıklanmıştır).</p>
 
     <h2>2. Fotoğrafla Yiyecek Tanıma</h2>
     <p>NutriFlow isteğe bağlı yapay zeka destekli yiyecek tanıma özelliği sunar. Bu özelliği kullandığınızda:</p>
     <ul>
-      <li>Çektiğiniz fotoğraf yalnızca yiyecekleri tanımlamak amacıyla üçüncü taraf bir yapay zeka hizmetine (<strong>Groq API</strong>) gönderilir</li>
-      <li>Fotoğraf yanıt oluşturmak için işlenir ve tarafımızca <strong>saklanmaz</strong></li>
+      <li>Fotoğraf, sunucumuza (<strong>Render.com</strong> üzerinde barındırılan) iletilir ve yalnızca yiyecekleri tanımlamak amacıyla <strong>Groq API</strong>'sine yönlendirilir</li>
+      <li>Fotoğraf yanıt oluşturmak için işlenir ve işlem sonrasında tarafımızca, Render.com veya Groq tarafından <strong>saklanmaz</strong></li>
       <li>Bu özellik tamamen isteğe bağlıdır — uygulama onsuz da tam olarak çalışır</li>
     </ul>
-    <p>Ayrıntılar için <a href="https://groq.com/privacy-policy/" target="_blank" style="color:#a78bfa">Groq'un Gizlilik Politikası</a>'na bakınız.</p>
+    <p>Ayrıntılar için <a href="https://groq.com/privacy-policy/" target="_blank" style="color:#a78bfa">Groq Gizlilik Politikası</a> ve <a href="https://render.com/privacy" target="_blank" style="color:#a78bfa">Render Gizlilik Politikası</a>'na bakınız.</p>
 
-    <h2>3. Ürün Veritabanı Araması</h2>
-    <p>Open Food Facts veritabanı aramasını kullandığınızda, arama sorgunuz gıda ürünü bilgilerini almak için <strong>Open Food Facts API</strong>'sine (openfoodfacts.org) gönderilir. Bu isteklere kişisel bilgi eklenmez. Bkz. <a href="https://world.openfoodfacts.org/privacy" target="_blank" style="color:#a78bfa">Open Food Facts Gizlilik Politikası</a>.</p>
+    <h2>3. Yiyecek Arama</h2>
+    <p>NutriFlow iki yiyecek arama modu sunar:</p>
+    <ul>
+      <li><strong>Open Food Facts araması:</strong> Arama sorgunuz, ürün bilgilerini almak için sunucumuz aracılığıyla Open Food Facts API'sine (openfoodfacts.org) gönderilir.</li>
+      <li><strong>Yapay zeka yiyecek araması:</strong> Arama sorgunuz sunucumuz aracılığıyla Groq API'sine gönderilir ve aradığınız yiyecek için tahmini besin değerleri döndürülür.</li>
+    </ul>
+    <p>Bu isteklere kişisel bilgi eklenmez. Bkz. <a href="https://world.openfoodfacts.org/privacy" target="_blank" style="color:#a78bfa">Open Food Facts Gizlilik Politikası</a>.</p>
 
-    <h2>4. Toplamadığımız Veriler</h2>
+    <h2>4. Su İçme Hatırlatıcıları</h2>
+    <p>NutriFlow, su içmenizi hatırlatmak için periyodik bildirimler gönderebilir. Bu özellik:</p>
+    <ul>
+      <li>Tamamen isteğe bağlıdır ve Ayarlar'dan istediğiniz zaman açılıp kapatılabilir</li>
+      <li>Bildirimleri cihazınızda yerel olarak zamanlamak için Android'in alarm sistemini kullanır</li>
+      <li>Herhangi bir veri iletmez — hatırlatıcılar tamamen cihazda işlenir</li>
+      <li>POST_NOTIFICATIONS, SCHEDULE_EXACT_ALARM ve RECEIVE_BOOT_COMPLETED izinlerini gerektirir</li>
+    </ul>
+
+    <h2>5. Uygulama İzinleri</h2>
+    <p>NutriFlow aşağıdaki Android izinlerini talep eder:</p>
+    <ul>
+      <li><strong>CAMERA</strong> — yalnızca yapay zeka yiyecek fotoğrafı tanıma için</li>
+      <li><strong>INTERNET</strong> — yiyecek araması ve yapay zeka fotoğraf analizi için</li>
+      <li><strong>POST_NOTIFICATIONS</strong> — su içme hatırlatma bildirimleri göndermek için</li>
+      <li><strong>SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM</strong> — cihaz uyku modundayken bile hatırlatıcıları zamanında iletmek için</li>
+      <li><strong>RECEIVE_BOOT_COMPLETED</strong> — cihaz yeniden başlatıldıktan sonra hatırlatıcıları yeniden zamanlamak için</li>
+    </ul>
+    <p>Bu izinlerin hiçbiri kişisel veri toplamak için kullanılmaz.</p>
+
+    <h2>6. Toplamadığımız Veriler</h2>
     <ul>
       <li>Adınızı, e-postanızı veya hesap bilgilerinizi toplamayız</li>
       <li>Analitik veya izleme araçları kullanmayız</li>
       <li>Reklam göstermeyiz</li>
-      <li>Verileri üçüncü taraflarla paylaşmayız (yukarıda belirtilen durumlar hariç)</li>
-      <li>Cihazınızda saklanan verilere erişimimiz yoktur</li>
+      <li>Verileri yukarıda belirtilenler dışında üçüncü taraflarla paylaşmayız</li>
+      <li>Cihazınızda saklanan sağlık verilerine erişimimiz yoktur</li>
     </ul>
 
-    <h2>5. Çocukların Gizliliği</h2>
+    <h2>7. Çocukların Gizliliği</h2>
     <p>NutriFlow 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek bilgi toplamayız.</p>
 
-    <h2>6. Politika Değişiklikleri</h2>
+    <h2>8. Politika Değişiklikleri</h2>
     <p>Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklikler uygulama içinde veya bu sayfada yayınlanacaktır.</p>
 
-    <h2>7. İletişim</h2>
+    <h2>9. İletişim</h2>
     <div class="contact-box">
       <p>Gizlilik Politikası hakkında sorularınız mı var?</p>
       <p style="margin-top:8px">İletişim: <a href="mailto:natalydoc19w63@gmail.com">natalydoc19w63@gmail.com</a></p>
       <p style="margin-top:4px;color:#475569;font-size:13px">Geliştirici: Nataliia Kozintseva</p>
     </div>
-    <div class="date">Son güncelleme: Haziran 2025</div>
+    <div class="date">Son güncelleme: Mart 2026</div>
   </div>
 
 </div>
 
 <script>
-function setLang(lang){
+function setLang(lang, btn) {
   document.querySelectorAll('.lang-section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.lang-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('lang-'+lang).classList.add('active');
-  event.target.classList.add('active');
+  btn.classList.add('active');
 }
 </script>
 </body>
