@@ -58,11 +58,12 @@
     <p>NutriFlow stores the following data exclusively on your device:</p>
     <ul>
       <li>Food diary entries (meals, calories, macronutrients)</li>
-      <li>Body weight and hydration logs</li>
+      <li>Body weight, hydration, and step count logs</li>
       <li>Mood and activity level entries</li>
       <li>Custom recipes you create</li>
       <li>Your daily nutrition goals and app settings</li>
       <li>Workout logs</li>
+      <li>Calorie and macro calculator results</li>
     </ul>
     <p>This data never leaves your device unless you explicitly use a feature that requires internet connectivity (described below).</p>
 
@@ -85,26 +86,47 @@
     <p>No personal information is included in these requests. See <a href="https://world.openfoodfacts.org/privacy" target="_blank" style="color:#a78bfa">Open Food Facts Privacy Policy</a>.</p>
 
     <h2>4. Water Reminder Notifications</h2>
-    <p>NutriFlow can send you periodic reminders to drink water. This feature:</p>
+    <p>NutriFlow can send you smart reminders to drink water. This feature:</p>
     <ul>
       <li>Is entirely optional and can be turned on or off at any time in Settings</li>
       <li>Uses Android's alarm system to schedule notifications locally on your device</li>
-      <li>Does not transmit any data — reminders are processed entirely on-device</li>
+      <li>Only notifies you if you haven't logged water recently and haven't reached your daily goal — it skips the notification silently otherwise</li>
+      <li>Does not transmit any data — all logic is processed entirely on-device</li>
+      <li>Does not send notifications during quiet hours (10 PM – 8 AM)</li>
       <li>Requires the POST_NOTIFICATIONS, SCHEDULE_EXACT_ALARM, and RECEIVE_BOOT_COMPLETED permissions to function correctly</li>
     </ul>
 
-    <h2>5. App Permissions</h2>
+    <h2>5. Step Counter</h2>
+    <p>NutriFlow can count your daily steps using your device's built-in pedometer sensor. This feature:</p>
+    <ul>
+      <li>Uses the device's hardware step counter sensor (TYPE_STEP_COUNTER) — no GPS or location data is used</li>
+      <li>All step data is stored locally on your device only and is never transmitted</li>
+      <li>Requires the ACTIVITY_RECOGNITION permission on Android 10 and above</li>
+      <li>Works only on devices that have a built-in step counter sensor — a message is shown if the sensor is unavailable</li>
+      <li>Step count resets to zero at midnight each day</li>
+    </ul>
+
+    <h2>6. AI Workout Search</h2>
+    <p>NutriFlow can search for workouts and estimate calories burned using AI. When you use this feature:</p>
+    <ul>
+      <li>Your workout search query (e.g. "cycling", "yoga") is sent through our relay server to the Groq API</li>
+      <li>No personal data (name, age, weight) is included in the query</li>
+      <li>Results are cached on the server for up to 6 hours to reduce API calls</li>
+    </ul>
+
+    <h2>7. App Permissions</h2>
     <p>NutriFlow requests the following Android permissions:</p>
     <ul>
       <li><strong>CAMERA</strong> — for AI food photo recognition only</li>
-      <li><strong>INTERNET</strong> — for food search and AI photo analysis</li>
+      <li><strong>INTERNET</strong> — for AI food/workout search and photo analysis</li>
       <li><strong>POST_NOTIFICATIONS</strong> — to send water reminder notifications</li>
       <li><strong>SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM</strong> — to deliver water reminders on time, even when the device is in sleep mode</li>
       <li><strong>RECEIVE_BOOT_COMPLETED</strong> — to reschedule water reminders after the device restarts</li>
+      <li><strong>ACTIVITY_RECOGNITION</strong> — to count your steps using the device's built-in pedometer (Android 10+)</li>
     </ul>
     <p>None of these permissions are used to collect personal data.</p>
 
-    <h2>6. Data We Do NOT Collect</h2>
+    <h2>8. Data We Do NOT Collect</h2>
     <ul>
       <li>We do not collect your name, email, or any account information</li>
       <li>We do not use analytics or tracking tools</li>
@@ -113,19 +135,19 @@
       <li>We do not have access to any health data stored on your device</li>
     </ul>
 
-    <h2>7. Children's Privacy</h2>
+    <h2>9. Children's Privacy</h2>
     <p>NutriFlow is not directed at children under the age of 13. We do not knowingly collect any information from children.</p>
 
-    <h2>8. Changes to This Policy</h2>
+    <h2>10. Changes to This Policy</h2>
     <p>We may update this Privacy Policy from time to time. Any changes will be posted within the app or on this page. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
 
-    <h2>9. Contact</h2>
+    <h2>11. Contact</h2>
     <div class="contact-box">
       <p>Questions about this Privacy Policy?</p>
       <p style="margin-top:8px">Contact: <a href="/cdn-cgi/l/email-protection#dbb5baafbab7a2bfb4b8eae2acede89bbcb6bab2b7f5b8b4b6"><span class="__cf_email__" data-cfemail="cda3acb9aca1b4a9a2aefcf4bafbfe8daaa0aca4a1e3aea2a0">[email&#160;protected]</span></a></p>
       <p style="margin-top:4px;color:#475569;font-size:13px">Developer: Nataliia Kozintseva</p>
     </div>
-    <div class="date">Last updated: March 2026</div>
+    <div class="date">Last updated: April 2026</div>
   </div>
 
   <!-- ═══════════════════════════════ RUSSIAN ═══════════════════════════════ -->
@@ -168,26 +190,47 @@
     <p>Никакие личные данные в этих запросах не передаются. См. <a href="https://world.openfoodfacts.org/privacy" target="_blank" style="color:#a78bfa">Политику конфиденциальности Open Food Facts</a>.</p>
 
     <h2>4. Напоминания о воде</h2>
-    <p>NutriFlow может отправлять периодические напоминания о необходимости пить воду. Эта функция:</p>
+    <p>NutriFlow отправляет умные напоминания о необходимости пить воду. Эта функция:</p>
     <ul>
       <li>Полностью опциональна и отключается в настройках в любое время</li>
       <li>Использует систему будильников Android для локального планирования уведомлений</li>
-      <li>Не передаёт никаких данных — напоминания обрабатываются исключительно на устройстве</li>
+      <li>Уведомляет только если вы давно не записывали воду и не достигли дневной цели — иначе пропускает уведомление без звука</li>
+      <li>Не отправляет уведомления в ночное время (22:00 – 08:00)</li>
+      <li>Не передаёт никаких данных — вся логика обрабатывается на устройстве</li>
       <li>Требует разрешений POST_NOTIFICATIONS, SCHEDULE_EXACT_ALARM и RECEIVE_BOOT_COMPLETED</li>
     </ul>
 
-    <h2>5. Разрешения приложения</h2>
+    <h2>5. Шагомер</h2>
+    <p>NutriFlow может считать ваши шаги, используя встроенный датчик шагомера устройства. Эта функция:</p>
+    <ul>
+      <li>Использует аппаратный датчик шагов (TYPE_STEP_COUNTER) — GPS и геолокация не используются</li>
+      <li>Все данные о шагах хранятся только на устройстве и никогда не передаются</li>
+      <li>Требует разрешения ACTIVITY_RECOGNITION на Android 10 и выше</li>
+      <li>Работает только на устройствах со встроенным шагомером — при отсутствии отображается сообщение</li>
+      <li>Счётчик шагов обнуляется каждую полночь</li>
+    </ul>
+
+    <h2>6. ИИ-поиск тренировок</h2>
+    <p>NutriFlow может искать тренировки и оценивать сожжённые калории с помощью ИИ. При использовании этой функции:</p>
+    <ul>
+      <li>Ваш поисковый запрос (например, «велосипед», «йога») отправляется через наш сервер в Groq API</li>
+      <li>Личные данные (имя, возраст, вес) в запрос не включаются</li>
+      <li>Результаты кэшируются на сервере до 6 часов для сокращения запросов к API</li>
+    </ul>
+
+    <h2>7. Разрешения приложения</h2>
     <p>NutriFlow запрашивает следующие разрешения Android:</p>
     <ul>
       <li><strong>CAMERA</strong> — только для функции распознавания еды по фото</li>
-      <li><strong>INTERNET</strong> — для поиска продуктов и анализа фото с помощью ИИ</li>
+      <li><strong>INTERNET</strong> — для ИИ-поиска еды, тренировок и анализа фото</li>
       <li><strong>POST_NOTIFICATIONS</strong> — для отправки напоминаний о воде</li>
       <li><strong>SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM</strong> — для своевременной доставки напоминаний, в том числе в спящем режиме</li>
       <li><strong>RECEIVE_BOOT_COMPLETED</strong> — для повторного планирования напоминаний после перезагрузки устройства</li>
+      <li><strong>ACTIVITY_RECOGNITION</strong> — для подсчёта шагов с помощью встроенного шагомера (Android 10+)</li>
     </ul>
     <p>Ни одно из этих разрешений не используется для сбора личных данных.</p>
 
-    <h2>6. Что мы НЕ собираем</h2>
+    <h2>8. Что мы НЕ собираем</h2>
     <ul>
       <li>Мы не собираем ваше имя, email или данные аккаунта</li>
       <li>Мы не используем аналитику или инструменты отслеживания</li>
@@ -196,19 +239,19 @@
       <li>У нас нет доступа к данным о здоровье, хранящимся на вашем устройстве</li>
     </ul>
 
-    <h2>7. Дети</h2>
+    <h2>9. Дети</h2>
     <p>NutriFlow не предназначен для детей младше 13 лет. Мы не собираем информацию о детях намеренно.</p>
 
-    <h2>8. Изменения политики</h2>
+    <h2>10. Изменения политики</h2>
     <p>Мы можем периодически обновлять эту Политику конфиденциальности. Изменения будут опубликованы в приложении или на этой странице.</p>
 
-    <h2>9. Контакты</h2>
+    <h2>11. Контакты</h2>
     <div class="contact-box">
       <p>Вопросы по Политике конфиденциальности?</p>
       <p style="margin-top:8px">Контакт: <a href="/cdn-cgi/l/email-protection#355b544154594c515a56040c420306755258545c591b565a58"><span class="__cf_email__" data-cfemail="7a141b0e1b16031e15194b430d4c493a1d171b131654191517">[email&#160;protected]</span></a></p>
       <p style="margin-top:4px;color:#475569;font-size:13px">Разработчик: Наталия Козинцева</p>
     </div>
-    <div class="date">Последнее обновление: март 2026</div>
+    <div class="date">Последнее обновление: апрель 2026</div>
   </div>
 
   <!-- ═══════════════════════════════ TURKISH ═══════════════════════════════ -->
@@ -224,7 +267,7 @@
     <p>NutriFlow aşağıdaki verileri yalnızca cihazınızda saklar:</p>
     <ul>
       <li>Yemek günlüğü kayıtları (öğünler, kalori, makro besinler)</li>
-      <li>Vücut ağırlığı ve su tüketimi kayıtları</li>
+      <li>Vücut ağırlığı, su tüketimi ve adım sayısı kayıtları</li>
       <li>Ruh hali ve aktivite düzeyi kayıtları</li>
       <li>Oluşturduğunuz özel tarifler</li>
       <li>Günlük beslenme hedefleri ve uygulama ayarları</li>
@@ -251,26 +294,47 @@
     <p>Bu isteklere kişisel bilgi eklenmez. Bkz. <a href="https://world.openfoodfacts.org/privacy" target="_blank" style="color:#a78bfa">Open Food Facts Gizlilik Politikası</a>.</p>
 
     <h2>4. Su İçme Hatırlatıcıları</h2>
-    <p>NutriFlow, su içmenizi hatırlatmak için periyodik bildirimler gönderebilir. Bu özellik:</p>
+    <p>NutriFlow, su içmenizi hatırlatmak için akıllı bildirimler gönderebilir. Bu özellik:</p>
     <ul>
       <li>Tamamen isteğe bağlıdır ve Ayarlar'dan istediğiniz zaman açılıp kapatılabilir</li>
       <li>Bildirimleri cihazınızda yerel olarak zamanlamak için Android'in alarm sistemini kullanır</li>
-      <li>Herhangi bir veri iletmez — hatırlatıcılar tamamen cihazda işlenir</li>
+      <li>Yalnızca yakın zamanda su içmemişseniz ve günlük hedefinize ulaşmamışsanız bildirim gönderir — aksi takdirde sessizce atlar</li>
+      <li>Gece saatlerinde (22:00 – 08:00) bildirim göndermez</li>
+      <li>Herhangi bir veri iletmez — tüm mantık cihazda işlenir</li>
       <li>POST_NOTIFICATIONS, SCHEDULE_EXACT_ALARM ve RECEIVE_BOOT_COMPLETED izinlerini gerektirir</li>
     </ul>
 
-    <h2>5. Uygulama İzinleri</h2>
+    <h2>5. Adım Sayacı</h2>
+    <p>NutriFlow, cihazınızın yerleşik adım sayacı sensörünü kullanarak günlük adımlarınızı sayabilir. Bu özellik:</p>
+    <ul>
+      <li>Donanım adım sensörünü (TYPE_STEP_COUNTER) kullanır — GPS veya konum verisi kullanılmaz</li>
+      <li>Tüm adım verileri yalnızca cihazınızda yerel olarak saklanır ve asla iletilmez</li>
+      <li>Android 10 ve üzeri sürümlerde ACTIVITY_RECOGNITION iznini gerektirir</li>
+      <li>Yalnızca yerleşik adım sayacı sensörü olan cihazlarda çalışır — sensör yoksa mesaj gösterilir</li>
+      <li>Adım sayısı her gece yarısı sıfırlanır</li>
+    </ul>
+
+    <h2>6. Yapay Zeka Antrenman Arama</h2>
+    <p>NutriFlow, yapay zeka kullanarak antrenman arayabilir ve yakılan kalorileri tahmin edebilir. Bu özelliği kullandığınızda:</p>
+    <ul>
+      <li>Antrenman arama sorgunuz (örn. "bisiklet", "yoga") sunucumuz aracılığıyla Groq API'sine gönderilir</li>
+      <li>Kişisel veriler (ad, yaş, ağırlık) sorguya dahil edilmez</li>
+      <li>Sonuçlar API çağrılarını azaltmak için sunucuda 6 saate kadar önbelleğe alınır</li>
+    </ul>
+
+    <h2>7. Uygulama İzinleri</h2>
     <p>NutriFlow aşağıdaki Android izinlerini talep eder:</p>
     <ul>
       <li><strong>CAMERA</strong> — yalnızca yapay zeka yiyecek fotoğrafı tanıma için</li>
-      <li><strong>INTERNET</strong> — yiyecek araması ve yapay zeka fotoğraf analizi için</li>
+      <li><strong>INTERNET</strong> — yapay zeka yiyecek/antrenman araması ve fotoğraf analizi için</li>
       <li><strong>POST_NOTIFICATIONS</strong> — su içme hatırlatma bildirimleri göndermek için</li>
       <li><strong>SCHEDULE_EXACT_ALARM / USE_EXACT_ALARM</strong> — cihaz uyku modundayken bile hatırlatıcıları zamanında iletmek için</li>
       <li><strong>RECEIVE_BOOT_COMPLETED</strong> — cihaz yeniden başlatıldıktan sonra hatırlatıcıları yeniden zamanlamak için</li>
+      <li><strong>ACTIVITY_RECOGNITION</strong> — yerleşik adım sayacı kullanarak adımları saymak için (Android 10+)</li>
     </ul>
     <p>Bu izinlerin hiçbiri kişisel veri toplamak için kullanılmaz.</p>
 
-    <h2>6. Toplamadığımız Veriler</h2>
+    <h2>8. Toplamadığımız Veriler</h2>
     <ul>
       <li>Adınızı, e-postanızı veya hesap bilgilerinizi toplamayız</li>
       <li>Analitik veya izleme araçları kullanmayız</li>
@@ -279,13 +343,13 @@
       <li>Cihazınızda saklanan sağlık verilerine erişimimiz yoktur</li>
     </ul>
 
-    <h2>7. Çocukların Gizliliği</h2>
+    <h2>9. Çocukların Gizliliği</h2>
     <p>NutriFlow 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek bilgi toplamayız.</p>
 
-    <h2>8. Politika Değişiklikleri</h2>
+    <h2>10. Politika Değişiklikleri</h2>
     <p>Bu Gizlilik Politikasını zaman zaman güncelleyebiliriz. Değişiklikler uygulama içinde veya bu sayfada yayınlanacaktır.</p>
 
-    <h2>9. İletişim</h2>
+    <h2>11. İletişim</h2>
     <div class="contact-box">
       <p>Gizlilik Politikası hakkında sorularınız mı var?</p>
       <p style="margin-top:8px">İletişim: <a href="/cdn-cgi/l/email-protection#e7898693868b9e838884d6de90d1d4a7808a868e8bc984888a"><span class="__cf_email__" data-cfemail="b4dad5c0d5d8cdd0dbd7858dc38287f4d3d9d5ddd89ad7dbd9">[email&#160;protected]</span></a></p>
